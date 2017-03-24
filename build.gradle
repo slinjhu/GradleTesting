@@ -1,10 +1,5 @@
 apply plugin: 'java'
 
-// Define the entry point for the compiled jar file
-jar {
-  manifest.attributes("Main-Class": "hello.Hello")
-}
-
 repositories {
   jcenter()
 }
@@ -14,6 +9,10 @@ dependencies {
   testCompile "junit:junit:4.12"
 }
 
+// Define the entry point for the compiled jar file
+jar {
+  manifest.attributes("Main-Class": "hello.Hello")
+}
 
 // Define integration test
 sourceSets {

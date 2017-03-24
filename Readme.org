@@ -1,23 +1,34 @@
-#+TITLE: Demo of unit and integration testing using Gradle
+#+TITLE: Unit and Integration Tests using Gradle
 
-* Source code hierarchy
+In this project, we play with unit test and integration test using Gradle.
+* Setup ~build.gradle~
+The ~java~ plugin already defined two source sets, namely ~main~ (production code that will be complied and assembled into a JAR file) and ~test~ (which will be executed merely). Different from unit tests, integration tests usually take longer time to perform, and thus it makes sense to introduce a new source set for integration test. 
+
+We have the following goals:
+- The source set should be configured such that IDEs like IntelliJ can identify these files as source code for testing.
+- Unit and integration tests can be run separately
+- A successful build should depend on pass of both unit test and integration test.
+The provided ~build.gradle~ would suffice.
+
+* Hierarchy of source files 
+With the default Java source sets and the newly added integration test, the source files should follow this hierarchy
 #+BEGIN_EXAMPLE
 ├── build.gradle
 └── src
-    ├── intest
-    │   ├── java
-    │   │   └── hello
-    │   │       └── HelloIntest.java
-    │   └── resources
     ├── main
     │   ├── java
     │   │   └── hello
     │   │       └── Hello.java
     │   └── resources
-    └── test
+    ├── test
+    │   ├── java
+    │   │   └── hello
+    │   │       └── HelloUnitTest.java
+    │   └── resources
+    └── intest
         ├── java
         │   └── hello
-        │       └── HelloTest.java
+        │       └── HelloIntegrationTest.java
         └── resources
 #+END_EXAMPLE
 
